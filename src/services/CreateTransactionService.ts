@@ -20,6 +20,10 @@ class CreateTransactionService {
       value,
     });
 
+    if (!['income', 'outcome'].includes(type)) {
+      throw Error('Transaction Type is invalid');
+    }
+
     if (checkBalance) {
       throw Error('Insufficient funds');
     }
